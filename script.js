@@ -167,6 +167,18 @@
       }});
   })();
 
+  /* ---------- SCENES: jornada full-screen (modelo reel) ---------- */
+  (function scenes(){
+    var list=gsap.utils.toArray(".scene");
+    if(!list.length||reduce) return;
+    list.forEach(function(sc){
+      var clip=sc.querySelector(".scene-img"), img=sc.querySelector(".scene-img img"), cap=sc.querySelector(".scene-cap");
+      gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:"none",scrollTrigger:{trigger:sc,start:"top bottom",end:"bottom top",scrub:true}});
+      gsap.fromTo(clip,{clipPath:"inset(0 0 100% 0)"},{clipPath:"inset(0 0 0% 0)",ease:"none",scrollTrigger:{trigger:sc,start:"top 92%",end:"top 45%",scrub:.5}});
+      if(cap) gsap.from(cap,{y:50,opacity:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:sc,start:"top 62%"}});
+    });
+  })();
+
   /* ---------- WORKS: scroll horizontal pinado ---------- */
   (function works(){
     var track=document.getElementById("worksTrack"), pin=document.getElementById("worksPin");

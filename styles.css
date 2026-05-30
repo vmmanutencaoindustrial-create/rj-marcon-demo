@@ -251,6 +251,17 @@ em{font-style:normal;color:var(--blue)}
 .enter-cap .kicker{display:block;margin-bottom:10px}
 .enter-hint{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--mut)}
 
+/* SCENES — jornada full-screen (modelo reel) */
+.scenes{position:relative}
+.scene{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end}
+.scene-img{position:absolute;inset:0;clip-path:inset(0);will-change:clip-path;z-index:0}
+.scene-img img{position:absolute;inset:-3% 0;width:100%;height:106%;object-fit:cover;will-change:transform}
+.scene::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(7,11,18,.12) 0%,rgba(7,11,18,.35) 45%,rgba(7,11,18,.85) 100%)}
+.scene-cap{position:relative;z-index:2;padding:0 var(--pad) 11vh;max-width:920px}
+.scene-cap .kicker{display:block;margin-bottom:14px}
+.scene-cap h2{font-size:clamp(2rem,5.5vw,4.4rem);line-height:1.05}
+@media(max-width:900px){.scene-cap{padding-bottom:14vh}.scene-cap h2{font-size:clamp(1.7rem,8vw,2.7rem)}}
+
 /* WORKS — scroll horizontal */
 .works{background:var(--bg);overflow:hidden}
 .works-pin{height:100svh;display:flex;flex-direction:column;justify-content:center;gap:34px}
