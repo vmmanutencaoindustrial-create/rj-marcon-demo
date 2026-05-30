@@ -22,7 +22,7 @@
   /* ---------- LENIS SMOOTH SCROLL ---------- */
   var lenis;
   if(!reduce && window.Lenis){
-    lenis = new Lenis({ lerp:.08, wheelMultiplier:1, smoothWheel:true });
+    lenis = new Lenis({ lerp:.062, wheelMultiplier:.9, smoothWheel:true });
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(function(t){ lenis.raf(t*1000); });
     gsap.ticker.lagSmoothing(0);
