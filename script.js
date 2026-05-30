@@ -14,7 +14,7 @@
   /* LENIS */
   var lenis;
   if(!reduce && window.Lenis){
-    lenis=new Lenis({lerp:.06,wheelMultiplier:.92,smoothWheel:true});
+    lenis=new Lenis({lerp:.055,wheelMultiplier:.88,smoothWheel:true});
     lenis.on("scroll",ScrollTrigger.update);
     gsap.ticker.add(function(t){lenis.raf(t*1000);});
     gsap.ticker.lagSmoothing(0);
@@ -97,18 +97,11 @@
     ScrollTrigger.create({trigger:el,start:"top 88%",onEnter:function(){el.classList.add("in");}});
   });
 
-  /* PROJETOS — preview flutuante */
-  if(!reduce && matchMedia("(hover:hover)").matches){
-    var px=innerWidth/2, py=innerHeight/2;
-    addEventListener("mousemove",function(e){px=e.clientX;py=e.clientY;});
-    document.querySelectorAll(".proj").forEach(function(p){
-      var media=p.querySelector(".proj-media");
-      var raf;
-      function follow(){media.style.left=px+"px";media.style.top=py+"px";raf=requestAnimationFrame(follow);}
-      p.addEventListener("mouseenter",function(){p.classList.add("show");follow();});
-      p.addEventListener("mouseleave",function(){p.classList.remove("show");cancelAnimationFrame(raf);});
-    });
-  }
+  /* PROJETOS — clip reveal das fotos */
+  if(!reduce) gsap.utils.toArray(".proj-card").forEach(function(c){
+    var img=c.querySelector(".proj-img");
+    gsap.fromTo(img,{clipPath:"inset(0 0 100% 0)"},{clipPath:"inset(0 0 0% 0)",duration:1.3,ease:"power3.out",scrollTrigger:{trigger:c,start:"top 90%"}});
+  });
 
   /* FORM */
   var form=document.getElementById("leadForm"), note=document.getElementById("formNote");
