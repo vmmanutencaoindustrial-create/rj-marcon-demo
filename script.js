@@ -22,7 +22,7 @@
   /* ---------- LENIS SMOOTH SCROLL ---------- */
   var lenis;
   if(!reduce && window.Lenis){
-    lenis = new Lenis({ lerp:.1, wheelMultiplier:1, smoothWheel:true });
+    lenis = new Lenis({ lerp:.08, wheelMultiplier:1, smoothWheel:true });
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(function(t){ lenis.raf(t*1000); });
     gsap.ticker.lagSmoothing(0);
@@ -163,6 +163,51 @@
   if(!reduce) gsap.utils.toArray("[data-parallax]").forEach(function(el){
     var amt=parseFloat(el.getAttribute("data-parallax"))||60;
     gsap.to(el,{y:amt,ease:"none",scrollTrigger:{trigger:el,start:"top bottom",end:"bottom top",scrub:true}});
+  });
+
+  /* ---------- MANIFESTO: revela palavra por palavra ---------- */
+  (function manifesto(){
+    var el=document.getElementById("manifestoText"); if(!el) return;
+    var hot={"promessa":1,"prazo":1,"orçamento":1,"retrabalho":1};
+    var words=el.textContent.trim().split(/\s+/);
+    el.innerHTML=words.map(function(w){
+      var k=w.toLowerCase().replace(/[^a-zà-ÿ]/g,"");
+      return '<span class="w'+(hot[k]?" hot":"")+'">'+w+'</span>';
+    }).join(" ");
+    var spans=el.querySelectorAll(".w");
+    if(reduce){spans.forEach(function(s){s.classList.add("on");});return;}
+    ScrollTrigger.create({trigger:"#manifesto",start:"top top",end:"bottom bottom",scrub:.4,
+      onUpdate:function(s){var n=Math.ceil(s.progress*spans.length);spans.forEach(function(sp,k){sp.classList.toggle("on",k<n);});}});
+  })();
+
+  /* ---------- CINE: vídeo pinado + capítulos ---------- */
+  (function cine(){
+    var pin=document.getElementById("cinePin"), vid=document.getElementById("cineVideo");
+    var chs=gsap.utils.toArray(".cine-ch");
+    if(!pin) return;
+    if(chs[0]) chs[0].classList.add("on");
+    if(vid) ScrollTrigger.create({trigger:pin,start:"top 80%",end:"bottom 20%",
+      onToggle:function(s){ if(s.isActive){vid.play&&vid.play();} else {vid.pause&&vid.pause();} }});
+    if(reduce) return;
+    ScrollTrigger.create({trigger:"#cine",start:"top top",end:"bottom bottom",scrub:.4,
+      onUpdate:function(s){var i=Math.min(chs.length-1,Math.floor(s.progress*chs.length*0.999));
+        chs.forEach(function(c,k){c.classList.toggle("on",k===i);});}});
+  })();
+
+  /* ---------- BG SCENE: jornada de cor ---------- */
+  (function journey(){
+    var bg=document.querySelector(".bgscene"); if(!bg||reduce) return;
+    var scenes=[["#hero","#0b0e13"],["#obra","#0c1117"],["#manifesto","#0a0f16"],["#servicos","#0b0e13"],["#obras","#090c11"],["#cine","#07090d"],["#processo","#0b0e13"],["#sobre","#0a1016"],["#contato","#0a121a"]];
+    scenes.forEach(function(p){var t=document.querySelector(p[0]); if(!t) return;
+      var set=function(){gsap.to(bg,{backgroundColor:p[1],duration:1.1,overwrite:"auto"});};
+      ScrollTrigger.create({trigger:t,start:"top 55%",end:"bottom 45%",onEnter:set,onEnterBack:set});
+    });
+  })();
+
+  /* ---------- CURTAIN wipe ---------- */
+  if(!reduce) gsap.utils.toArray(".stats").forEach(function(el){
+    el.classList.add("curtain");
+    ScrollTrigger.create({trigger:el,start:"top 82%",onEnter:function(){el.classList.add("wiped");}});
   });
 
   /* ---------- SVC CARD GLOW + TILT ---------- */

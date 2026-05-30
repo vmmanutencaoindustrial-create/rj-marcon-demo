@@ -11,6 +11,9 @@
 </head>
 <body>
 
+<!-- BG SCENE (jornada de cor no scroll) -->
+<div class="bgscene" aria-hidden="true"></div>
+
 <!-- PRELOADER -->
 <div class="preloader" id="preloader">
   <div class="pre-inner">
@@ -158,6 +161,14 @@
     </div>
   </section>
 
+  <!-- MANIFESTO (revela palavra por palavra no scroll) -->
+  <section class="manifesto" id="manifesto">
+    <div class="manifesto-pin">
+      <span class="kicker manifesto-kick">nosso compromisso</span>
+      <p class="manifesto-text" id="manifestoText">Cada obra é uma promessa. A gente entrega no prazo, no orçamento e sem retrabalho — porque o seu nome também está em jogo.</p>
+    </div>
+  </section>
+
   <!-- SERVIÇOS -->
   <section class="services" id="servicos">
     <div class="sec-head reveal">
@@ -186,6 +197,14 @@
         <p>Manutenção predial preventiva e corretiva por contrato. Seu patrimônio sempre funcionando, sem dor de cabeça.</p>
         <ul><li>Contratos prediais</li><li>Preventiva &amp; corretiva</li><li>Atendimento ágil</li></ul>
       </article>
+    </div>
+  </section>
+
+  <!-- MARQUEE infinito -->
+  <section class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>Construções</span><i>✦</i><span>Reformas</span><i>✦</i><span>Manutenções</span><i>✦</i><span>Engenharia</span><i>✦</i><span>Retrofit</span><i>✦</i><span>Galpões</span><i>✦</i>
+      <span>Construções</span><i>✦</i><span>Reformas</span><i>✦</i><span>Manutenções</span><i>✦</i><span>Engenharia</span><i>✦</i><span>Retrofit</span><i>✦</i><span>Galpões</span><i>✦</i>
     </div>
   </section>
 
@@ -222,6 +241,21 @@
           <div class="work-img"><img src="assets/obra-4.jpg" alt="Vista aérea de canteiro de obras" loading="lazy" /></div>
           <div class="work-meta"><span>04 — Retrofit</span><h3>Reforma corporativa</h3><p>Modernização predial · Pinheiros</p></div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CINE: vídeo pinado com capítulos revelando por cima -->
+  <section class="cine" id="cine">
+    <div class="cine-pin" id="cinePin">
+      <video class="cine-video" id="cineVideo" muted loop playsinline poster="assets/hero-poster.jpg">
+        <source src="assets/timelapse.mp4" type="video/mp4" />
+      </video>
+      <div class="cine-veil" aria-hidden="true"></div>
+      <div class="cine-stage">
+        <div class="cine-ch" data-ch="0"><span>01</span><h3>Planejamento</h3><p>Projeto, sondagem e cronograma antes da primeira escavação.</p></div>
+        <div class="cine-ch" data-ch="1"><span>02</span><h3>Execução</h3><p>Equipe própria, engenharia em campo e acompanhamento diário.</p></div>
+        <div class="cine-ch" data-ch="2"><span>03</span><h3>Entrega</h3><p>Vistoria, chaves na mão e suporte de manutenção contínuo.</p></div>
       </div>
     </div>
   </section>
