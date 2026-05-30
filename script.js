@@ -147,6 +147,26 @@
   var pl=document.getElementById("procLine");
   if(pl) gsap.to(pl,{width:"88%",ease:"none",scrollTrigger:{trigger:".proc-track",start:"top 80%",end:"bottom 60%",scrub:true}});
 
+  /* ---------- ENTER: portal scroll-zoom (entrar na casa) ---------- */
+  (function enterPortal(){
+    var sec=document.getElementById("enter"), frame=document.getElementById("enterFrame"),
+        ext=document.getElementById("enterExt"), int=document.getElementById("enterInt"),
+        label=document.getElementById("enterLabel");
+    if(!sec||!frame) return;
+    if(reduce){frame.style.clipPath="inset(0 round 0)";int.style.opacity=1;ext.style.transform="none";int.style.transform="none";return;}
+    ScrollTrigger.create({trigger:sec,start:"top top",end:"bottom bottom",scrub:.5,
+      onUpdate:function(s){
+        var p=s.progress, k=Math.min(1,p/0.62);
+        var vt=25*(1-k), vr=31*(1-k), rad=18*(1-k);
+        frame.style.clipPath="inset("+vt.toFixed(2)+"vh "+vr.toFixed(2)+"vw round "+rad.toFixed(1)+"px)";
+        var sc=(1.18-0.18*k).toFixed(3);
+        ext.style.transform="scale("+sc+")"; int.style.transform="scale("+sc+")";
+        var f=Math.max(0,Math.min(1,(p-0.55)/0.4));
+        int.style.opacity=f;
+        if(label) label.textContent = f>0.5 ? "por dentro" : "a chegada";
+      }});
+  })();
+
   /* ---------- WORKS: scroll horizontal pinado ---------- */
   (function works(){
     var track=document.getElementById("worksTrack"), pin=document.getElementById("worksPin");

@@ -240,6 +240,17 @@ em{font-style:normal;color:var(--blue)}
 .curtain>*{clip-path:inset(0 0 100% 0)}
 .curtain.wiped>*{clip-path:inset(0 0 0% 0);transition:clip-path 1.1s var(--ease)}
 
+/* ENTER — portal: entrar na casa no scroll */
+.enter{height:340vh;position:relative}
+.enter-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--bg)}
+.enter-frame{position:absolute;inset:0;clip-path:inset(25vh 31vw round 18px);will-change:clip-path;z-index:1}
+.enter-ext,.enter-int{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;transform:scale(1.18)}
+.enter-int{opacity:0}
+.enter-veil{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,15,23,.6));z-index:2}
+.enter-cap{position:absolute;left:0;right:0;bottom:6vh;z-index:5;text-align:center}
+.enter-cap .kicker{display:block;margin-bottom:10px}
+.enter-hint{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--mut)}
+
 /* WORKS — scroll horizontal */
 .works{background:var(--bg);overflow:hidden}
 .works-pin{height:100svh;display:flex;flex-direction:column;justify-content:center;gap:34px}
