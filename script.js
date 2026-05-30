@@ -131,7 +131,7 @@
       .to(glass,{opacity:1,scale:1,duration:1.6,stagger:.06,ease:"power2.out",onStart:function(){setStep(2);}})
       .to(roof,{scaleY:1,duration:.8,onStart:function(){setStep(3);}})
       .to(cable,{attr:{y2:520},duration:1},"<")
-      .to(glass,{fill:"rgba(194,160,107,.4)",stroke:"#C2A06B",duration:1,onStart:function(){setStep(4);}})
+      .to(glass,{fill:"rgba(94,155,209,.4)",stroke:"#5E9BD1",duration:1,onStart:function(){setStep(4);}})
       .to(crane,{opacity:.25,x:60,duration:1.2,ease:"power1.inOut"},"-=.4");
   })();
 
