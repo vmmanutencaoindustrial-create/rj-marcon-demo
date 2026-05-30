@@ -3,6 +3,8 @@
 @font-face{font-family:'Satoshi';src:url('assets/fonts/satoshi-400.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Satoshi';src:url('assets/fonts/satoshi-500.woff2') format('woff2');font-weight:500;font-display:swap}
 @font-face{font-family:'Satoshi';src:url('assets/fonts/satoshi-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Zodiak';src:url('assets/fonts/zodiak-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Zodiak';src:url('assets/fonts/zodiak-700.woff2') format('woff2');font-weight:700;font-display:swap}
 :root{
   --blue:#2BA8E0; --blue-d:#0E7FB5; --blue-glow:rgba(43,168,224,.35);
   --bg:#0b0e13; --bg2:#0f141b; --panel:#141a22; --line:#1f2730;
@@ -259,6 +261,12 @@ em{font-style:normal;color:var(--blue)}
 .about-bignum{position:absolute;top:-14%;right:1%;font-family:'Clash Display';font-weight:700;font-size:clamp(7rem,20vw,18rem);line-height:.8;color:rgba(43,168,224,.07);z-index:0;pointer-events:none;letter-spacing:-.05em}
 .about-card>.about-left,.about-card>.about-right{position:relative;z-index:1}
 .about-right{margin-top:46px}
+
+/* SERIF EDITORIAL — estilo Cliff House / imobiliário de luxo */
+h1,h2,.hero-title,.sec-head h2,.manifesto-text,.cine-ch h3,.work-meta h3,.about-left h2,.contact-info h2,.quote,.about-bignum{font-family:'Zodiak','Clash Display',serif!important;letter-spacing:-.015em}
+.hero-title{font-weight:700;font-size:clamp(1.55rem,6.3vw,4.9rem)}
+.manifesto-text{font-weight:400}
+.about-bignum{font-weight:700}
 
 /* FOOTER */
 .foot{padding:clamp(40px,6vh,70px) var(--pad);border-top:1px solid var(--line);background:var(--bg2)}
